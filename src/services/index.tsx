@@ -42,7 +42,7 @@ const ServicesSection: NextPage = () => {
                         <p className="ml-3 text-gray-900">{systemStatus?.title}</p>                        
                     </div>
                     <div>
-                        <p className="text-xs text-gray-400">Last updated</p>
+                        <p className="text-xs text-gray-400">Dernière mise à jour</p>
                         <p className="text-xs text-gray-400 text-end ">{systemStatus?.datetime}</p>
                     </div>
                 </div>
@@ -51,7 +51,7 @@ const ServicesSection: NextPage = () => {
                 <div className="card-body">
                     {
                         isServicesLoading ? (
-                            <p>Loading...</p>
+                            <p>Chargement...</p>
                         ) : (
                             <ul>
                                 {
@@ -63,7 +63,7 @@ const ServicesSection: NextPage = () => {
                         )
                     }
                 </div>
-                <p className="mt-10 sm:text-lg	text-base font-semibold leading-7 text-gray-900">Recent incident</p>
+                <p className="mt-10 sm:text-lg	text-base font-semibold leading-7 text-gray-900">Incidents récents</p>
                 <IncidentsSection />
             </div>
         </div >

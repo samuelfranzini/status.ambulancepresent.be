@@ -46,7 +46,7 @@ function useServices() {
 }
 
 async function logs(key: string): Promise<LogDaySummary[]> {
-    const response = await fetch(`https://raw.githubusercontent.com/mehatab/fettle/main/public/status/${key}_report.log`);
+    const response = await fetch(`https://raw.githubusercontent.com/samuelfranzini/status.ambulancepresent.be/main/public/status/${key}_report.log`);
 
     const text = await response.text();
     const lines = text.split("\n");
@@ -108,9 +108,9 @@ function fillData(data: LogDaySummary[]): LogDaySummary[] {
         const summary = data.find((item) => item.date === d.toISOString().substr(0, 10));
         logDaySummary.push({
             avg_response_time: summary?.avg_response_time || 0,
-            current_status: summary?.current_status || "unknown",
+            current_status: summary?.current_status || "inconnu",
             date: d.toISOString().substr(0, 10),
-            status: summary?.status || "unknown"
+            status: summary?.status || "inconnu"
         })
     }
 

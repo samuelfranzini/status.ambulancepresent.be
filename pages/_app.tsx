@@ -6,7 +6,8 @@ function MyApp({ Component, pageProps }: AppProps) {
 	return (
 		<>
 			<Head>
-				<title>System Status</title>
+				<title>Statut | Ambulance Présent 2.0</title>
+				<meta name="robots" content="noindex" />
 			</Head>
 			<Component {...pageProps} />
 		</>

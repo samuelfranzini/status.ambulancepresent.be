@@ -18,7 +18,11 @@ const IncidentsSection: NextPage = () => {
 	return (
 		<div className="mt-5">
 			{isIncidentsLoading ? (
-				<p>Loading...</p>
+				<p>Chargement...</p>
+			) : (monthlyIncidents as MonthlyIncident[]).length === 0 ? (
+				<div className="rounded-md border border-blue-200 bg-blue-50 px-4 py-3 text-sm text-blue-800" role="status">
+					Aucun incident à signaler.
+				</div>
 			) : (
 				<div>
 					{(monthlyIncidents as MonthlyIncident[]).map((incidents) => (
@@ -47,7 +51,7 @@ const IncidentsSection: NextPage = () => {
 											{incident.status === "closed" ? (
 												<div>
 													<p className="text-sm text-gray-500">
-														This incident has been resolved.
+														L'incident a été résolu.
 													</p>
 													<p className="text-sm text-gray-500">
 														{formatDate(incident.created_at)} -{" "}
@@ -57,7 +61,7 @@ const IncidentsSection: NextPage = () => {
 											) : (
 												<div>
 													<p className="text-sm text-gray-500">
-														This incident is currently being investigated.
+														L'incident est actuellement en cours d'investigation.
 													</p>
 													<p className="text-sm text-gray-500">
 														{formatDate(incident.created_at)}

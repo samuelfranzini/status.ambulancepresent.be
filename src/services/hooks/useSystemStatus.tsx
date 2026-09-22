@@ -26,28 +26,30 @@ function useSystemStatus() {
 
                     services.push(status);
                 }
+
+                console.log(services)
                 
                 if (services.every((item) => item.status === "success")) {
                     setSystemStatus({
-                        title: "All System Operational",
+                        title: "Tout fonctionne",
                         status: Status.OPERATIONAL,
                         datetime: services[0].date
                     });
                 } else if (services.every((item) => item.status === "failed")) {
                     setSystemStatus({
-                        title: "Outage",
+                        title: "Incident",
                         status: Status.OUTAGE,
                         datetime: services[0].date
                      });
                 } else if (services.every((item) => item.status === "")) {
                     setSystemStatus({
-                        title: "Unknown",
+                        title: "Inconnu",
                         status: Status.UNKNOWN,
                         datetime: services[0].date
                     });
                 } else {
                     setSystemStatus({
-                        title: "Partial Outage",
+                        title: "Incident partiel",
                         status: Status.PARTIAL_OUTAGE,
                         datetime: services[0].date
                     });
@@ -65,7 +67,7 @@ function useSystemStatus() {
 }
 
 async function logs(key: string): Promise<ServiceStatus> {
-    const response = await fetch(`https://raw.githubusercontent.com/mehatab/fettle/main/public/status/${key}_report.log`);
+    const response = await fetch(`https://raw.githubusercontent.com/samuelfranzini/status.ambulancepresent.be/main/public/status/${key}_report.log`);
     const text = await response.text();
     const lines = text.split("\n");
     try {
